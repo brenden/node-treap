@@ -1,0 +1,27 @@
+{
+  "name": "treap",
+  "version": "0.0.0",
+  "description": "Treap data structure",
+  "author": "Brenden Kokoszka",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/brenden/node-treap.git"
+  },
+  "engine": [ "node >=0.7.00" ],
+  "devDependencies": {
+    "mocha" : "*",
+    "should": "*"
+  },
+  "main": "./lib/treap.js",
+  "scripts": {
+    "test"  : "mocha --ui bdd --reporter spec --require should ./test/tests.js"
+  },
+  "keywords": [
+    "treap",
+    "tree",
+    "binary search tree",
+    "BST",
+    "data structure",
+  ]
+}
