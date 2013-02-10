@@ -2,6 +2,93 @@
 
 An implementation of the treap data structure for node.js and the browser
 
+## Treaps
+[Treaps](http://en.wikipedia.org/wiki/Treap) are self-balancing binary trees 
+which combine the properties of heaps and binary search trees. Each node has a
+_key_, which follows binary search tree ordering, and a _priority_, which 
+follows heap ordering. Treaps can be used to efficiently implement sets and 
+sorted lists, among other things.
+
+## Example
+
+```javascript
+var treap = require('treap');
+var t = treap.create();
+
+// Insert some keys, augmented with data fields
+t.insert(5, {foo: 12});
+t.insert(2, {foo: 8});
+t.insert(7, {foo: 1000});
+
+// Look up treap elements
+var a = t.find(5);
+var b = t.findRank(1);
+
+console.log(a.key, a.data); // 5 { foo: 12 }
+console.log(b.key, b.data); // 2 { foo: 8 }
+
+// Remove treap elements
+t.remove(a); // by reference to node
+t.remove(7); // by key
+```
+
+## Treap Methods
+<table>
+  <thead>
+    <tr>
+      <th>Method</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>insert(key, <em>data</em>)</th> 
+      <td>Inserts a node with the given <code>key</code>, optionally augmented with an arbitrary <code>data</code> object.</td>
+    </tr>
+
+    <tr>
+      <th>find(key)</th> 
+      <td>Returns the node with the given key, or null if no such node exists. The node object contains <code>key</code>
+      and <code>data</code> fields, as wells as fields for navigating the search tree: <code>left</code>, <code>right</code>,
+      and <code>parent</code>.</td>
+    </tr>
+
+    <tr>
+      <th>remove(key), remove(node)</th> 
+      <td>Remove the node with the given numeric <code>key</code>, or the given <code>node</code> itself</td>
+    </tr>
+
+    <tr>
+      <th>findRange(from, to)</th> 
+      <td>Returns a list containing all nodes with <code>from</code> &lt;= key &lt;= <code>to</code>.</td>
+    </tr>
+
+    <tr>
+      <th>findRank(k)</th> 
+      <td>Returns the nodes with the kth smallest key.</td>
+    </tr>
+
+    <tr>
+      <th>traverse(fn)</th> 
+      <td>Performs an inorder traversal of the tree and executes function <code>fn</code> for each node. <code>fn</code>
+      is passed the arguments <code>(node, i)</code>, where <code>i</code> counts the callings of <code>fn</code>.</td>
+    </tr>
+
+    <tr>
+      <th>getRoot()</th> 
+      <td>Returns the root node.</td>
+    </tr>
+
+    <tr>
+      <th>getSize()</th> 
+      <td>Returns the number of nodes in the treap.</td>
+    </tr>
+  </tbody>
+</table>
+
+## Tests
+Tests are written with [Mocha](http://visionmedia.github.com/mocha/) and can be run with `npm test`.
+
 ## License
 (The MIT License)
 
