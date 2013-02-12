@@ -80,6 +80,7 @@ describe('performing removals', function() {
   });
 });
 
+
 describe('traversing', function() {
   var t = treap.create();
   var list = [];
@@ -93,5 +94,29 @@ describe('traversing', function() {
     t.traverse(function(node, i) {
       node.key.should.equal(list[i]);
     })
+  });
+});
+
+
+describe('splitting and merging', function() {
+  var t = treap.create();
+  var t0, t1;
+
+  for (var i=0; i < 100; i++) {
+    t.insert(i);
+  }
+
+  it('splits a treap in two', function() {
+    var split = t.split(50);
+    t0 = split[0];
+    t1 = split[1];
+    t0.getSize().should.equal(50);
+    t1.getSize().should.equal(50);
+  });
+
+  it('merges two treaps back together', function() {
+    var mergedTreap = treap.merge(t0, t1);
+    mergedTreap.getSize().should.equal(100);
+    mergedTreap.find(50).key.should.equal(50)
   });
 });
