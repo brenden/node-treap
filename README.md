@@ -32,6 +32,26 @@ t.remove(a); // by reference to node
 t.remove(7); // by key
 ```
 
+## Module Methods
+<table>
+  <thead>
+    <tr>
+      <th>Method</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>create()</th> 
+      <td>Factory method to initialize a new, empty treap.</td>
+    </tr>
+    <tr>
+      <th>merge(lTreap, rTreap)</th> 
+      <td>Merges the two treaps into a single treap, given that maxKey(lTreap) < minKey(rTreap).</td>
+    </tr>
+  </tbody>
+</table>
+
 ## Treap Methods
 <table>
   <thead>
@@ -66,6 +86,12 @@ t.remove(7); // by key
     <tr>
       <th>findRank(k)</th> 
       <td>Returns the nodes with the kth smallest key.</td>
+    </tr>
+
+    <tr>
+      <th>split(k)</th> 
+      <td>Splits the treap into two treaps lTreap and rTreap such that maxKey(lTreap) < k <= minKey(rTreap).
+      The two new treaps are retured as the list <code>[lTreap, rTreap]</code>.</td>
     </tr>
 
     <tr>
