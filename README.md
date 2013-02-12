@@ -33,84 +33,45 @@ t.remove(7); // by key
 ```
 
 ## Module Methods
-<table>
-  <thead>
-    <tr>
-      <th>Method</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>create()</th> 
-      <td>Factory method to initialize a new, empty treap.</td>
-    </tr>
-    <tr>
-      <th>merge(lTreap, rTreap)</th> 
-      <td>Merges the two treaps into a single treap, given that maxKey(lTreap) < minKey(rTreap).</td>
-    </tr>
-  </tbody>
-</table>
+###create()
+Factory method to initialize a new, empty treap.
+
+###merge(lTreap, rTreap)
+Merges the two treaps into a single treap, given that <code>maxKey(lTreap)</code> &lt; <code>minKey(rTreap)</code>.
 
 ## Treap Methods
-<table>
-  <thead>
-    <tr>
-      <th>Method</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>insert(key, <em>data</em>)</th> 
-      <td>Inserts a node with the given <code>key</code>, optionally augmented with an arbitrary <code>data</code> object.</td>
-    </tr>
+###insert(key, [data])
+Inserts a node with the given <code>key</code> (optionally augmented with an arbitrary <code>data</code> object).
 
-    <tr>
-      <th>find(key)</th> 
-      <td>Returns the node with the given key, or null if no such node exists. The node object contains <code>key</code>
-      and <code>data</code> fields, as wells as fields for navigating the search tree: <code>left</code>, <code>right</code>,
-      and <code>parent</code>.</td>
-    </tr>
+###find(key)
+Returns the node with the given key, or null if no such node exists. The node object contains <code>key</code>
+and <code>data</code> fields, as wells as fields for navigating the search tree: <code>left</code>, <code>right</code>,
+and <code>parent</code>.
 
-    <tr>
-      <th>remove(key), remove(node)</th> 
-      <td>Remove the node with the given numeric <code>key</code>, or the given <code>node</code> itself</td>
-    </tr>
+###remove(key|node)
+Remove the node with the given numeric <code>key</code>, or the given <code>node</code> itself.
 
-    <tr>
-      <th>findRange(from, to)</th> 
-      <td>Returns a list containing all nodes with <code>from</code> &lt;= key &lt;= <code>to</code>.</td>
-    </tr>
+###findRange(from, to)
+Returns a list containing all nodes with <code>from</code> &lt;= <code>node.key</code> &lt;= <code>to</code>.
 
-    <tr>
-      <th>findRank(k)</th> 
-      <td>Returns the nodes with the kth smallest key.</td>
-    </tr>
+###findRank(k)
+Returns the node with the kth smallest key.
 
-    <tr>
-      <th>split(k)</th> 
-      <td>Splits the treap into two treaps lTreap and rTreap such that maxKey(lTreap) < k <= minKey(rTreap).
-      The two new treaps are retured as the list <code>[lTreap, rTreap]</code>.</td>
-    </tr>
+###split(k)
+Splits the treap into two treaps <code>lTreap</code> and <code>rTreap</code> such that <code>maxKey(lTreap)</code> 
+&lt; <code>k</code> &lt;= <code>minKey(rTreap)</code>. The two new treaps are retured as the list <code>[lTreap, 
+rTreap]</code>.</td>
 
-    <tr>
-      <th>traverse(fn)</th> 
-      <td>Performs an inorder traversal of the tree and executes function <code>fn</code> for each node. <code>fn</code>
-      is passed the arguments <code>(node, i)</code>, where <code>i</code> counts the callings of <code>fn</code>.</td>
-    </tr>
+###traverse(fn)
+Performs an inorder traversal of the tree and executes function <code>fn</code> for each node. <code>fn</code>
+is passed the arguments <code>(node, i)</code>, where <code>i</code> counts the callings of <code>fn</code>.</td>
+The traversal can be aborted before it finishes by <code>fn</code> returning true.
 
-    <tr>
-      <th>getRoot()</th> 
-      <td>Returns the root node.</td>
-    </tr>
+###getRoot()
+Returns the root node.
 
-    <tr>
-      <th>getSize()</th> 
-      <td>Returns the number of nodes in the treap.</td>
-    </tr>
-  </tbody>
-</table>
+###getSize()
+Returns the number of nodes in the treap.
 
 ## Tests
 Tests are written with [Mocha](http://visionmedia.github.com/mocha/) and can be run with `npm test`.
