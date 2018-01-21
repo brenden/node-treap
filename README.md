@@ -74,7 +74,7 @@ Returns the root node.
 Returns the number of nodes in the treap.
 
 ## Tests
-Tests are written with [Mocha](http://visionmedia.github.com/mocha/) and can be run with `npm test`.
+Tests are written with [Mocha](http://mochajs.org/) and can be run with `npm test`.
 
 ## License
 (The MIT License)
