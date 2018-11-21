@@ -25,7 +25,6 @@ describe('performing insertions', function() {
   });
 });
 
-
 describe('performing lookups', function() {
   var t = treap.create();
 
@@ -120,3 +119,30 @@ describe('splitting and merging', function() {
     mergedTreap.find(50).key.should.equal(50)
   });
 });
+
+describe('data', function() {
+  var t = treap.create();
+
+  it('inserts falsy data values', function() {
+    // https://developer.mozilla.org/en-US/docs/Glossary/Falsy
+    var falsyValues = [
+      false,
+      null,
+      undefined,  // ok to include
+      0,
+      NaN,
+      '',
+      "",
+      ``,
+    ];
+    var found;
+    falsyValues.map(function(value, key) {
+      t.insert(key, value)
+    });
+
+    found = t.findRange(0, falsyValues.length);
+    found.map(function(node) {
+      return node.data;
+    }).should.eql(falsyValues);
+  });
+})
